@@ -1,0 +1,38 @@
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 animate-fade-up">
+                
+                <!-- Card do Formulário -->
+                <div class="task-card p-4 p-md-5">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <a href="/tasks" class="btn-action text-decoration-none">
+                            <i class="bi bi-arrow-left fs-5"></i>
+                        </a>
+                        <h2 class="h3 fw-bold mb-0">Editar a Tarefa {{task.title}}</h2>
+                    </div>
+
+                    <form action="/tasks/edit" method="post">
+                        <input type="hidden" name="id" id="id" value="{{task.id}}"> 
+                        <div class="mb-3">
+                            <label for="title" class="form-label fw-medium text-secondary small text-uppercase">Título da Tarefa</label>
+                            <input class="form-control form-control-lg rounded-3 fs-6" type="text" name="title" id="title" placeholder="Ex: Estudar Node.js e MVC" value="{{task.title}}" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="description" class="form-label fw-medium text-secondary small text-uppercase">Descrição</label>
+                            <textarea class="form-control rounded-3" name="description" id="description" rows="4" placeholder="Detalhes opcionais sobre esta tarefa...">{{task.description}}</textarea>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-3 fs-6 fw-medium">
+                                <i class="bi bi-check-circle me-1"></i> Guardar Tarefa
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

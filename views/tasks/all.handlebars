@@ -1,0 +1,76 @@
+<section class="py-5">
+    <div class="container">
+        <!-- Header da Página -->
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4 animate-fade-up">
+            <div>
+                <h1 class="fw-bold mb-1 h2">Minhas Tarefas</h1>
+                <p class="text-secondary mb-0">Gerencie e organize as suas atividades diárias.</p>
+            </div>
+            <a href="/tasks/add" class="btn btn-primary rounded-pill px-4 py-2 fw-medium shadow-sm">
+                <i class="bi bi-plus-lg me-1"></i> Nova Tarefa
+            </a>
+        </div>
+
+        <!-- Lista de Tasks -->
+        {{#if tasks.length}}
+        <div class="row g-3">
+            {{#each tasks}}
+            <div class="col-md-6 col-lg-4 task-card-wrapper animate-fade-up" id="task-{{this.id}}">
+                <div class="task-card h-100 d-flex flex-column justify-content-between {{#if this.done}}completed{{/if}}">
+                    
+                    <div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="task-title">{{this.title}}</span>
+                            {{#if this.done}}
+                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2 py-1 small">Concluída</span>
+                            {{/if}}
+                        </div>
+                        {{#if this.description}}
+                        <p class="text-secondary small mb-3 text-truncate-2">{{this.description}}</p>
+                        {{/if}}
+                    </div>
+
+                    <!-- Ações -->
+                    <div class="d-flex justify-content-end align-items-center gap-2 pt-2 border-top border-secondary-subtle">
+                        <!-- Botão Concluir/Reabrir -->
+                        <form action="/tasks/updateStatus" method="post">
+                            <input type="hidden" name="id" value="{{this.id}}">
+                            <input type="hidden" name="done" value="{{this.done}}">
+                            <button type="submit" class="btn-action check {{#if this.done}}is-done{{/if}}" title="Marcar/Desmarcar">
+                                <i class="bi bi-check-lg fs-5"></i>
+                            </button>
+                        </form>
+
+                        <!-- Botão Editar -->
+                        <a href="/tasks/edit/{{this.id}}" class="btn-action btn-edit" title="Editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+
+                        <!-- Botão Eliminar -->
+                        <form action="/tasks/delete" method="post" class="d-inline form-delete" data-id="{{this.id}}">
+                            <input type="hidden" name="id" value="{{this.id}}">
+                            <button type="submit" class="btn-action btn-delete" title="Excluir">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <!-- Empty State -->
+        <div class="text-center py-5 my-5 animate-fade-up">
+            <div class="bg-body-tertiary d-inline-flex p-4 rounded-circle mb-3">
+                <i class="bi bi-inbox text-secondary display-5"></i>
+            </div>
+            <h3 class="fw-bold h4">Nenhuma tarefa encontrada</h3>
+            <p class="text-secondary">A sua lista está limpa! Crie novas tarefas para começar.</p>
+            <a href="/tasks/add" class="btn btn-primary rounded-pill px-4 mt-2">
+                Criar Primeira Tarefa
+            </a>
+        </div>
+        {{/if}}
+    </div>
+</section>
