@@ -138,8 +138,8 @@ No meu canal partilho tutoriais práticos, resolução de erros comuns e dicas d
 
 ## 🤝 Contacto & Redes Sociais
 
-- **LinkedIn:** [teu-perfil](https://www.linkedin.com/in/valdecir-waldhelm-morgado/)
-- **GitHub:** [@teu-usuario](https://github.com/valdecirwm)
+- **LinkedIn:** [Meu Linkedin](https://www.linkedin.com/in/valdecir-waldhelm-morgado/)
+- **GitHub:** [Meu GitHub](https://github.com/valdecirwm)
 - **E-mail:** valdwald81@gmail.com
 
 ---
